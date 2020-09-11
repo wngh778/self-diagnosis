@@ -29,11 +29,11 @@ public class CompanyTest {
     public void insertCompanyData()
     {
         Company company = new Company();
-        company.setCompany_id("ssg001");
-        company.setCompany_name("신세계아이앤씨");
-        company.setAdmin("ssgadmin");
+        company.setCompany_id("ssg002");
+        company.setCompany_name("백화점팀");
+        company.setAdmin("ssgadmin002");
         company.setDomain("@shinsegae.com");
-        company.setDiagnosis_url("ssg-selfdiagnosis.com/ssg001");
+        company.setDiagnosis_url("ssg-selfdiagnosis.com/ssg002");
         System.out.println(companyController.createCompany(company));
     }
 

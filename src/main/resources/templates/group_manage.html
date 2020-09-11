@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+
+    <!-- favicon.ico 404 (Not Found) -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+
     <title>조직 관리</title>
+
 </head>
 <body>
 
+<div th:replace="fragments/header :: header">
+</div>
+<form role="form" th:action="@{/groupSearch.do}" th:object="${Company}"  action="#" id="groupForm" method="post">
+<div class="container">
+    <div class="hero-unit">
+
+        <div class="card-body"><h1 class="card-title">조직 관리</h1>
+            <div class="float-right">
+<!--                <div class="form-group">-->
+                    <input th:field="*{groupCode}" class="mb-2 mr-2 form-control-sm" type="text" placeholder="조직코드 또는 조직명" id="groupCode">
+                    <button class="mb-2 mr-2 btn-transition btn btn-outline-secondary">조회</button>
+                    <button class="mb-2 mr-2 btn-transition btn btn-outline-secondary">추가</button>
+                    <button class="mb-2 mr-2 btn-transition btn btn-outline-secondary">저장</button>
+                    <button class="mb-2 mr-2 btn-transition btn btn-outline-secondary">삭제</button>
+<!--                </div>-->
+            </div>
+            <div class="table-responsive">
+                <table class="mb-0 table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>조직코드</th>
+                        <th>조직명</th>
+                        <th>관리자</th>
+                        <th>도메인</th>
+                        <th>문진표URL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="group, groupStat : ${companyList}">
+                        <th scope="row" th:text="${groupStat.count}"></th>
+                        <td th:text="${group.company_id}"></td>
+                        <td th:text="${group.company_name}"></td>
+                        <td th:text="${group.admin}"></td>
+                        <td th:text="${group.domain}"></td>
+                        <td th:text="${group.diagnosis_url}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p>
+            <!--<a href="/signup" th:href="@{/signup}" class="btn btn-large btn-success">Sign up</a>-->
+        </p>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+</form>
 </body>
 </html>
