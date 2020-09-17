@@ -17,6 +17,9 @@ public interface CompanyRepository extends MongoRepository<Company, Long> {
     @Override
     Company save(Company company);
 
+    @Override
+    Optional<Company> findById(Long aLong);
+
     //@Query("db.company.find({ \"$or\": [{company_id: /001/}, {company_name: /아이앤씨/}]})")
     //List<Company> findByIdOrName(String name);
 }
